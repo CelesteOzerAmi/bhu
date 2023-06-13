@@ -1,0 +1,89 @@
+body {
+    box-sizing: content-box;
+    margin: 1rem;
+    padding: 2rem;
+    background: rgb(54, 1, 10);
+    background: linear-gradient(360deg, rgba(54, 1, 10, 0.908000700280112) -50%, rgba(199, 182, 235, 1) 100%);
+}
+
+
+header {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 1rem;
+}
+
+main {
+    display: flexbox;
+    padding: 1rem;
+}
+
+.card {
+    margin: 1rem;
+    text-align: center;
+    max-width: 20rem; }
+
+img {
+    max-height: 450px;
+}
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    padding-right: 6rem;
+    margin-top: 2rem;
+    font-size: x-large;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+    
+}
+
+h3 {
+    text-align: center;
+}
+h4 {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+p {
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+form {
+    padding: 2rem;
+
+}
+
+.usName {
+    text-align: end;
+    align-self: flex-end;
+}
+.form-check {
+    margin-top: 2rem;
+    padding: 2rem;
+    align-items: center;
+}
+
+.btn-dark {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    align-content: center;
+    align-self: center;
+}
+
+
+
+footer {
+
+    text-align: center;
+    padding: 1rem;
+    font-size: small;
+
+}
