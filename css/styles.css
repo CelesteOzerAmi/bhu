@@ -19,12 +19,15 @@ main {
 }
 
 .card {
+    
     margin: 1rem;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     max-width: 20rem; }
 
 img {
-    max-height: 450px;
+    height: 450px;
 }
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

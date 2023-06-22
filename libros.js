@@ -87,19 +87,20 @@ let coleccion = document.getElementById("coleccion")
 
 function crearColeccion() {
     coleccion.innerHTML = "";
-    coleccion.classList.add("card");
-    carrito.forEach((libro, index) => {
+    coleccion.classList.add("card-group");
+    carrito.forEach((libro) => {
         let carritocontainer = document.createElement("div");
         carritocontainer.classList.add("card");
-        carritocontainer.innerHTML = `<section id="section"> <h3> "${libro.titulo}", por ${libro.autor}.</h3> <p>editorial: ${libro.editorial}</p> <small>año de publicación: ${libro.año}</small> <a class="btn btn-dark" onClick="eliminarDeColeccion(${libro.index})">quitar de la colección</a></section>`
+        carritocontainer.innerHTML = `<section id="section"> <h3> "${libro.titulo}", por ${libro.autor}.</h3> <p>editorial: ${libro.editorial}</p> <small>año de publicación: ${libro.año}</small> <a class="btn btn-dark" onClick="eliminarDeColeccion(${libro.id})">quitar de la colección</a></section>`
         coleccion.appendChild(carritocontainer)
     })
 }
 
 /* funcion para eliminar producto del carrito */
 
-function eliminarDeColeccion(index) {
-    carrito.splice((index), 1);
+function eliminarDeColeccion(id) {
+    const producto = carrito.find((producto) => producto.id === id);
+    carrito.splice(carrito.indexOf(producto), 1);
     if (carrito.length < 1) {
         coleccion.innerHTML = "<h4>sin libros en esta colección :(</h4>"
     } else {
