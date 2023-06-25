@@ -15,23 +15,36 @@ let botonForm = document.getElementById("registro");
 
 /* storage + condicionales y eventos formulario registro */
 
+if (sessionStorage.getItem("usuario")) {
+    contenedorForm.innerHTML = `<section> <h2 class="display-3">usuario ingresado</h2>  <p> nombre: ${nombre.value} email: ${email.value} </p> <p> direccion: ${direccion.value} apartamento: ${apto.value}, ${depto.value}, ${pais.value}</p> </section>`
+    contenedorForm = JSON.parse(sessionStorage.getItem("usuario"));
+
+} else {
+    botonForm.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (email.value === "" || contrasena.value === "") {
+            Swal.fire({
+                title: 'error :(',
+                text: 'completá todos los campos',
+                icon: 'error'
+            })
+        }
+        else {
+            Swal.fire({
+                text: 'usuario creado exitosamente! :)',
+                icon: 'success',
+            })
+            contenedorForm.innerHTML = "";
+            let nombUsu = document.createElement("div")
+            nombUsu.innerHTML = `<section class="text-center"> <h2 class="display-3">tus datos ingresados</h2>  <p> nombre: ${nombre.value} email: ${email.value} </p> <p> direccion: ${direccion.value} apartamento: ${apto.value}, ${depto.value}, ${pais.value}</p> </section>`
+            contenedorForm.appendChild(nombUsu);
+            resetStorage()
+        }
+    })
+}
+
+
 const resetStorage = (contenedorForm) => {
     sessionStorage.setItem("usuario", JSON.stringify(contenedorForm))
 }
 
-if (sessionStorage.getItem("usuario")) {
-    contenedorForm.innerHTML =  `<section> <h2 class="display-3">usuario ingresado</h2>  <p> nombre: ${nombre.value} email: ${email.value} </p> <p> direccion: ${direccion.value} apartamento: ${apto.value}, ${depto.value}, ${pais.value}</p> </section>`
-    contenedorForm = JSON.parse(sessionStorage.getItem("usuario"))
-} else {
-    resetStorage();
-    botonForm.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (email.value === "" || contrasena.value === "") { alert("error al registrar usuario") }
-        else {
-            contenedorForm.innerHTML = "";
-            let nombUsu = document.createElement("div")
-            nombUsu.innerHTML = `<section> <h2 class="display-3">usuario creado exitosamente</h2>  <p> nombre: ${nombre.value} email: ${email.value} </p> <p> direccion: ${direccion.value} apartamento: ${apto.value}, ${depto.value}, ${pais.value}</p> </section>`
-            contenedorForm.appendChild(nombUsu)
-        }
-    })
-} 

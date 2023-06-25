@@ -32,6 +32,10 @@ btn1.addEventListener("click", () => {
     if (carrito.find(({ id }) => id == libro1.id)) { } else {
         carrito.push(libro1);
         crearColeccion();
+        Swal.fire({
+            title: 'libro agregado exitosamente! :)',
+            icon: 'success'
+        })
     }
 })
 
@@ -45,6 +49,10 @@ btn2.addEventListener("click", () => {
     if (carrito.find(({ id }) => id == libro2.id)) { } else {
         carrito.push(libro2);
         crearColeccion();
+        Swal.fire({
+            title: 'libro agregado exitosamente! :)',
+            icon: 'success'
+        })
     }
 })
 
@@ -58,6 +66,10 @@ btn3.addEventListener("click", () => {
     if (carrito.find(({ id }) => id == libro3.id)) { } else {
         carrito.push(libro3);
         crearColeccion();
+        Swal.fire({
+            title: 'libro agregado exitosamente! :)',
+            icon: 'success'
+        })
     }
 })
 
@@ -72,6 +84,10 @@ btn4.addEventListener("click", () => {
     } else {
         carrito.push(libro4);
         crearColeccion();
+        Swal.fire({
+            title: 'libro agregado exitosamente! :)',
+            icon: 'success'
+        })
     }
 })
 
@@ -135,8 +151,11 @@ function editarTex() {
 
 function eliminarDeColeccion(id) {
     const producto = carrito.find((producto) => producto.id === id);
-    carrito.splice(carrito.indexOf(producto), 1)
-        ;
+    carrito.splice(carrito.indexOf(producto), 1);
+    Swal.fire({
+        title: 'libro eliminado de la colección :(',
+        icon: 'warning'
+    })
     if (carrito.length < 1) {
         coleccion.innerHTML = "<h4>sin libros en esta colección :(</h4>"
     } else {
