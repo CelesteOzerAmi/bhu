@@ -13,7 +13,7 @@ let contrasena = document.getElementById("inputPassword");
 let botonForm = document.getElementById("registro");
 
 
-/* storage + condicionales y eventos formulario registro */
+/* storage + condicionales y eventos formulario registro *//*
 
 let usuarioData = sessionStorage.getItem("usuario");
 
@@ -50,3 +50,56 @@ const resetStorage = (contenedorForm) => {
     sessionStorage.setItem("usuario", JSON.stringify(contenedorForm))
 }
 
+*/
+
+
+if (sessionStorage.getItem("usuario")) {
+    mostrarUsuario();
+} else {
+    botonForm.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (email.value === "" || contrasena.value === "") {
+            Swal.fire({
+                title: 'Error :(',
+                text: '¡Completa todos los campos!',
+                icon: 'error'
+            });
+        } else {
+            Swal.fire({
+                text: '¡Usuario creado exitosamente! :)',
+                icon: 'success',
+            });
+            guardarUsuario();
+            mostrarUsuario();
+        }
+    });
+}
+
+
+const guardarUsuario = () => {
+    let usuario = {
+        nombre: nombre.value,
+        apellido: apellido.value,
+        email: email.value,
+        pais: pais.value,
+        depto: depto.value,
+        direccion: direccion.value,
+        apto: apto.value
+    };
+
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
+};
+
+const mostrarUsuario = () => {
+    let usuario = JSON.parse(sessionStorage.getItem("usuario"));
+
+    contenedorForm.innerHTML = `
+        <section>
+        <h2 class="display-3">Usuario ingresado</h2>
+        <p>Nombre: ${usuario.nombre} ${usuario.apellido}</p>
+        <p>Email: ${usuario.email}</p>
+        <p>Dirección: ${usuario.direccion}</p>
+        <p>Apartamento: ${usuario.apto}, ${usuario.depto}, ${usuario.pais}</p>
+        </section>
+    `;
+};
