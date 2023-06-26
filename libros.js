@@ -95,7 +95,7 @@ btn4.addEventListener("click", () => {
 
 let coleccion = document.getElementById("coleccion")
 
-/* storage carrito ERROR 
+/* storage carrito ERROR */
 
 const setStorage = (coleccion) => {
     sessionStorage.setItem("coleccion", JSON.stringify(coleccion))
@@ -104,7 +104,7 @@ const setStorage = (coleccion) => {
 if (sessionStorage.getItem("coleccion")) {
     coleccion = JSON.parse(sessionStorage.getItem("coleccion"))
     crearColeccion()
-} else { setStorage() }*/
+} else { setStorage() }
 
 /* funcion para añadir producto al carrito */
 

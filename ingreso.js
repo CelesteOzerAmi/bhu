@@ -15,14 +15,16 @@ let botonForm = document.getElementById("registro");
 
 /* storage + condicionales y eventos formulario registro */
 
-if (sessionStorage.getItem("usuario")) {
+let usuarioData = sessionStorage.getItem("usuario");
+
+if (usuarioData) {
     contenedorForm.innerHTML = `<section> <h2 class="display-3">usuario ingresado</h2>  <p> nombre: ${nombre.value} email: ${email.value} </p> <p> direccion: ${direccion.value} apartamento: ${apto.value}, ${depto.value}, ${pais.value}</p> </section>`
-    contenedorForm = JSON.parse(sessionStorage.getItem("usuario"));
+    contenedorForm = JSON.parse(usuarioData);
 
 } else {
     botonForm.addEventListener("click", (e) => {
         e.preventDefault();
-        if (email.value === "" || contrasena.value === "") {
+        if (email.value === "" || contrasena.value === "" || nombre.value === "") {
             Swal.fire({
                 title: 'error :(',
                 text: 'completá todos los campos',
