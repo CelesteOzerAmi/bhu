@@ -53,29 +53,6 @@ const resetStorage = (contenedorForm) => {
 */
 
 
-if (sessionStorage.getItem("usuario")) {
-    mostrarUsuario();
-} else {
-    botonForm.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (email.value === "" || contrasena.value === "") {
-            Swal.fire({
-                title: 'Error :(',
-                text: '¡Completa todos los campos!',
-                icon: 'error'
-            });
-        } else {
-            Swal.fire({
-                text: '¡Usuario creado exitosamente! :)',
-                icon: 'success',
-            });
-            guardarUsuario();
-            mostrarUsuario();
-        }
-    });
-}
-
-
 const guardarUsuario = () => {
     let usuario = {
         nombre: nombre.value,
@@ -98,8 +75,30 @@ const mostrarUsuario = () => {
         <h2 class="display-3">Usuario ingresado</h2>
         <p>Nombre: ${usuario.nombre} ${usuario.apellido}</p>
         <p>Email: ${usuario.email}</p>
-        <p>Dirección: ${usuario.direccion}</p>
-        <p>Apartamento: ${usuario.apto}, ${usuario.depto}, ${usuario.pais}</p>
+        <p>Dirección: ${usuario.direccion}, ${usuario.apto}, ${usuario.depto}, ${usuario.pais} </p>
         </section>
     `;
 };
+
+
+if (sessionStorage.getItem("usuario")) {
+    mostrarUsuario();
+} else {
+    botonForm.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (email.value === "" || contrasena.value === "" || nombre.value === "") {
+            Swal.fire({
+                title: 'error :(',
+                text: '¡completá todos los campos!',
+                icon: 'error'
+            });
+        } else {
+            Swal.fire({
+                text: '¡usuario creado exitosamente! :)',
+                icon: 'success',
+            });
+            guardarUsuario();
+            mostrarUsuario();
+        }
+    });
+}
