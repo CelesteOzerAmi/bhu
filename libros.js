@@ -46,8 +46,8 @@ const getBooks = async () => {
 
 getBooks()
 
-
-
+let btn1 = document.getElementById("btn1")
+console.log(btn1)
 
 /* array carrito */
 let carrito = [];
