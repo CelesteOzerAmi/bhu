@@ -1,29 +1,13 @@
-/* constructor 
-class Libro {
-    constructor(id, titulo, autor, editorial, año) {
-        this.id = id;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.editorial = editorial;
-        this.año = año;
-    }
-}*/
 
-/* objetos 
-const libro1 = new Libro(1, "Los miserables", "Victor Hugo", "A. Lacroix, Verboeckhoven & Ce., Bruselas, Bélgica.", 1862)
-const libro2 = new Libro(2, "El segundo sexo", "Simone de Beauvior", "Gallimard, Francia.", 1949)
-const libro3 = new Libro(3, "Crítica de la razón pura", "Immanuel Kant", "desconocida, Prusia.", 1781)
-const libro4 = new Libro(4, "Sobre las revoluciones de las orbes celestes", "Nicolas Copérnico", "desconocida", 1543)
-*/
-/* array de objetos
-const libros = [libro1, libro2, libro3, libro4]*/
+/* array carrito */
 
+let carrito = [];
+
+/* DOM libros */
 
 const libreria = document.getElementById("contenedorProd")
 
-/* DOM tarjeta 1  */
-
-
+/* función para mostrar objetos de json + agregar objetos al carrito */
 
 const getBooks = async () => {
     const response = await fetch("../data.json")
@@ -35,88 +19,26 @@ const getBooks = async () => {
         <img= ${libro.imagen} class="card-img-top ">
         <div class="card-body">
             <h5 class="card-title">${libro.titulo}</h5>
-            <p class="card-text">novela escrita por ${libro.autor}, publicada en ${libro.año}.</p>
+            <p class="card-text">libro escrito por ${libro.autor}, publicado en ${libro.año}.</p>
             <a href="#end" class="btn btn-primary" id="btn${libro.id}">añadir a mi colección</a>
         </div>
     </div>`
         libreria.append(div)
+        let btn = document.getElementById(`btn${libro.id}`)
+        btn.addEventListener("click", () => {
+            if (carrito.find(({ id }) => id == libro.id)) { } else {
+                carrito.push(libro);
+                crearColeccion();
+                btn.innerHTML = "añadido a mi colección"
+                Swal.fire({
+                    title: 'libro agregado exitosamente! :)',
+                    icon: 'success'
+                })
+            }
+        })
     })
-
 }
-
 getBooks()
-
-let btn1 = document.getElementById("btn1")
-console.log(btn1)
-
-/* array carrito */
-let carrito = [];
-
-
-/* evento tarjeta 1 */
-
-btn1.addEventListener("click", () => {
-    if (carrito.find(({ id }) => id == libro1.id)) { } else {
-        carrito.push(libro1);
-        crearColeccion();
-        Swal.fire({
-            title: 'libro agregado exitosamente! :)',
-            icon: 'success'
-        })
-    }
-})
-
-/* DOM tarjeta 2 
-
-const btn2 = document.getElementById("boton2")*/
-
-/* evento tarjeta 2 */
-
-btn2.addEventListener("click", () => {
-    if (carrito.find(({ id }) => id == libro2.id)) { } else {
-        carrito.push(libro2);
-        crearColeccion();
-        Swal.fire({
-            title: 'libro agregado exitosamente! :)',
-            icon: 'success'
-        })
-    }
-})
-
-/* DOM tarjeta 3 
-
-const btn3 = document.getElementById("boton3")*/
-
-/* evento tarjeta 3 */
-
-btn3.addEventListener("click", () => {
-    if (carrito.find(({ id }) => id == libro3.id)) { } else {
-        carrito.push(libro3);
-        crearColeccion();
-        Swal.fire({
-            title: 'libro agregado exitosamente! :)',
-            icon: 'success'
-        })
-    }
-})
-
-/* DOM tarjeta 4 
-
-const btn4 = document.getElementById("boton4")*/
-
-/* evento tarjeta 4 */
-
-btn4.addEventListener("click", () => {
-    if (carrito.find(({ id }) => id == libro4.id)) {
-    } else {
-        carrito.push(libro4);
-        crearColeccion();
-        Swal.fire({
-            title: 'libro agregado exitosamente! :)',
-            icon: 'success'
-        })
-    }
-})
 
 /* DOM carrito */
 
@@ -139,9 +61,7 @@ if (sessionStorage.getItem("coleccion")) {
 
 /* funcion para añadir producto al carrito */
 
-
 function crearColeccion() {
-    editarTex()
     coleccion.innerHTML = "";
     coleccion.classList.add("card-group");
     carrito.forEach((libro) => {
@@ -153,46 +73,24 @@ function crearColeccion() {
     setStorage()
 }
 
-/* función para editar texto en botones de tarjetas */
-
-function editarTex() {
-    if (carrito.find(({ id }) => id === libro1.id)) {
-        btn1.innerHTML = "libro en mi colección"
-    } else {
-        btn1.innerHTML = "añadir a mi colección"
-    }
-    if (carrito.find(({ id }) => id === libro2.id)) {
-        btn2.innerHTML = "libro en mi colección"
-    } else {
-        btn2.innerHTML = "añadir a mi colección"
-    }
-    if (carrito.find(({ id }) => id === libro3.id)) {
-        btn3.innerHTML = "libro en mi colección"
-    } else {
-        btn3.innerHTML = "añadir a mi colección"
-    }
-    if (carrito.find(({ id }) => id === libro4.id)) {
-        btn4.innerHTML = "libro en mi colección"
-    } else {
-        btn4.innerHTML = "añadir a mi colección"
-    }
-}
-
 /* funcion para eliminar producto del carrito */
 
 function eliminarDeColeccion(id) {
     const producto = carrito.find((producto) => producto.id === id);
+    let btn = document.getElementById(`btn${producto.id}`);
     carrito.splice(carrito.indexOf(producto), 1);
     Swal.fire({
         title: 'libro eliminado de la colección :(',
         icon: 'warning'
-    })
-    if (carrito.length < 1) {
+    });
+    (carrito.length < 1) ?
         coleccion.innerHTML = "<h4>sin libros en esta colección :(</h4>"
+        : crearColeccion()
+    if (carrito.find(({ id }) => id === producto.id)) {
+        btn.innerHTML = "libro en mi colección"
     } else {
-        crearColeccion()
+        btn.innerHTML = "añadir a mi colección"
     }
-    editarTex()
-    setStorage()
+    /*setStorage()*/
 }
 
