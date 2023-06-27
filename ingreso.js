@@ -30,7 +30,6 @@ const guardarUsuario = () => {
 
 const mostrarUsuario = () => {
     let usuario = JSON.parse(sessionStorage.getItem("usuario"));
-
     contenedorForm.innerHTML = `
         <section>
         <h2 class="display-3">Usuario ingresado</h2>

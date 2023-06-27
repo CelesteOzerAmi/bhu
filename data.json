@@ -1,0 +1,31 @@
+[
+    {
+        "titulo": "Los miserables",
+        "autor": "Victor Hugo",
+        "año": 1862,
+        "editorial": "A. Lacroix, Verboeckhoven & Ce., Bruselas, Bélgica.",
+        "id": 1,
+        "imagen": "../imgs/1.jpg"
+    },
+    {
+        "titulo": "El segundo sexo",
+        "autor": "Simone de Beauvior",
+        "año": 1949,
+        "editorial": "Gallimard, Francia.",
+        "id": 2
+    },
+    {
+        "titulo": "Crítica de la razón pura",
+        "autor": "Immanuel Kant",
+        "año": 1781,
+        "editorial": "desconocida, Prusia.",
+        "id": 3
+    },
+    {
+        "titulo": "Sobre las revoluciones de las orbes celestes",
+        "autor": "Nicolas Copérnico",
+        "año": 1543,
+        "editorial": "desconocida",
+        "id": 4
+    }
+]
