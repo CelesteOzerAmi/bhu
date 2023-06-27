@@ -47,7 +47,8 @@ let coleccion = document.getElementById("coleccion")
 /* storage carrito ERROR */
 
 const setStorage = () => {
-    sessionStorage.setItem("coleccion", JSON.stringify(coleccion))
+    let colecciondatos = coleccion;
+    sessionStorage.setItem("coleccion", JSON.stringify(colecciondatos))
 }
 
 const getStorage = () => {
@@ -91,6 +92,6 @@ function eliminarDeColeccion(id) {
     } else {
         btn.innerHTML = "añadir a mi colección"
     }
-    /*setStorage()*/
+    setStorage()
 }
 
