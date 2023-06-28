@@ -5,27 +5,30 @@
         "año": 1862,
         "editorial": "A. Lacroix, Verboeckhoven & Ce., Bruselas, Bélgica.",
         "id": 1,
-        "imagen": "../imgs/1.jpg"
+        "imagen":  "../imgs/1.jpg"
     },
     {
         "titulo": "El segundo sexo",
         "autor": "Simone de Beauvior",
         "año": 1949,
         "editorial": "Gallimard, Francia.",
-        "id": 2
+        "id": 2,
+        "imagen":  "../imgs/2.jpg"
     },
     {
         "titulo": "Crítica de la razón pura",
         "autor": "Immanuel Kant",
         "año": 1781,
         "editorial": "desconocida, Prusia.",
-        "id": 3
+        "id": 3,
+        "imagen":  "../imgs/3.png"
     },
     {
         "titulo": "Sobre las revoluciones de las orbes celestes",
         "autor": "Nicolas Copérnico",
         "año": 1543,
         "editorial": "desconocida",
-        "id": 4
+        "id": 4,
+        "imagen":  "../imgs/4.jpg"
     }
 ]

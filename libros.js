@@ -1,7 +1,6 @@
-
 /* array carrito */
 
-let carrito = [];
+let carrito = JSON.parse(sessionStorage.getItem("coleccion")) || [];
 
 /* DOM libros */
 
@@ -15,12 +14,13 @@ const getBooks = async () => {
     data.forEach((libro) => {
         const div = document.createElement("div")
         div.innerHTML =
-            `<div class="card" id="card1" style="width: 18rem">
-        <img= ${libro.imagen} class="card-img-top ">
+            `<div class="card text-bg-dark">
+        <img src= ${libro.imagen} class="card-img-top">
         <div class="card-body">
-            <h5 class="card-title">${libro.titulo}</h5>
-            <p class="card-text">libro escrito por ${libro.autor}, publicado en ${libro.año}.</p>
-            <a href="#end" class="btn btn-primary" id="btn${libro.id}">añadir a mi colección</a>
+            <h5 class="card-title">"${libro.titulo}"</h5>
+            <p class="card-text">  escrito por ${libro.autor}, </p>
+            <p>  publicado en ${libro.año}.</p>
+            <a href="#end" class="btn btn-dark" id="btn${libro.id}">añadir a mi colección</a>
         </div>
     </div>`
         libreria.append(div)
@@ -44,12 +44,12 @@ getBooks()
 
 let coleccion = document.getElementById("coleccion")
 
-/* storage carrito ERROR */
+/* storage carrito */
 
 const setStorage = () => {
-    let colecciondatos = coleccion;
-    sessionStorage.setItem("coleccion", JSON.stringify(colecciondatos))
-}
+    let colecciondatos = carrito;
+    sessionStorage.setItem("coleccion", JSON.stringify(colecciondatos));
+};
 
 const getStorage = () => {
     JSON.parse(sessionStorage.getItem("coleccion"))
@@ -58,7 +58,9 @@ const getStorage = () => {
 if (sessionStorage.getItem("coleccion")) {
     getStorage();
     crearColeccion()
-} else { setStorage() }
+} else {
+    setStorage()
+}
 
 /* funcion para añadir producto al carrito */
 
@@ -68,7 +70,14 @@ function crearColeccion() {
     carrito.forEach((libro) => {
         let carritocontainer = document.createElement("div");
         carritocontainer.classList.add("card");
-        carritocontainer.innerHTML = `<section id="section"> <h3> "${libro.titulo}", por ${libro.autor}.</h3> <p>editorial: ${libro.editorial}</p> <small>año de publicación: ${libro.año}</small> <a class="btn btn-dark" onClick="eliminarDeColeccion(${libro.id})">quitar de la colección</a></section>`
+        carritocontainer.innerHTML = `
+        <img src= ${libro.imagen} class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">"${libro.titulo}"</h5>
+            <p class="card-text">   por ${libro.autor} </p>
+            <a class="btn btn-dark" onClick="eliminarDeColeccion(${libro.id})">quitar de la colección</a>
+        </div>
+    `
         coleccion.appendChild(carritocontainer)
     })
     setStorage()
@@ -85,7 +94,7 @@ function eliminarDeColeccion(id) {
         icon: 'warning'
     });
     (carrito.length < 1) ?
-        coleccion.innerHTML = "<h4>sin libros en esta colección :(</h4>"
+        coleccion.innerHTML = `<h4 class="display-6"> sin libros en esta colección</h4>`
         : crearColeccion()
     if (carrito.find(({ id }) => id === producto.id)) {
         btn.innerHTML = "libro en mi colección"
