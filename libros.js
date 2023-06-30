@@ -15,7 +15,7 @@ const getBooks = async () => {
         const div = document.createElement("div")
         div.innerHTML =
             `<div class="card text-bg-dark">
-        <img src= ${libro.imagen} class="card-img-top">
+        <img src= ${libro.imagen} class="img card-img-top">
         <div class="card-body">
             <h5 class="card-title">"${libro.titulo}"</h5>
             <p class="card-text">  escrito por ${libro.autor}, </p>
@@ -69,13 +69,13 @@ function crearColeccion() {
     coleccion.classList.add("card-group");
     carrito.forEach((libro) => {
         let carritocontainer = document.createElement("div");
-        carritocontainer.classList.add("card");
-        carritocontainer.innerHTML = `
-        <img src= ${libro.imagen} class="card-img-top">
+        carritocontainer.innerHTML = `<div class="card">
+        <img src= ${libro.imagen} class="img card-img-top">
         <div class="card-body">
             <h5 class="card-title">"${libro.titulo}"</h5>
             <p class="card-text">   por ${libro.autor} </p>
             <a class="btn btn-dark" onClick="eliminarDeColeccion(${libro.id})">quitar de la colección</a>
+        </div>  
         </div>
     `
         coleccion.appendChild(carritocontainer)

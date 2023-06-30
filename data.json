@@ -5,7 +5,7 @@
         "año": 1862,
         "editorial": "A. Lacroix, Verboeckhoven & Ce., Bruselas, Bélgica.",
         "id": 1,
-        "imagen":  "../imgs/1.jpg"
+        "imagen": "../imgs/1.jpg"
     },
     {
         "titulo": "El segundo sexo",
@@ -13,7 +13,7 @@
         "año": 1949,
         "editorial": "Gallimard, Francia.",
         "id": 2,
-        "imagen":  "../imgs/2.jpg"
+        "imagen": "../imgs/2.jpg"
     },
     {
         "titulo": "Crítica de la razón pura",
@@ -21,14 +21,30 @@
         "año": 1781,
         "editorial": "desconocida, Prusia.",
         "id": 3,
-        "imagen":  "../imgs/3.png"
+        "imagen": "../imgs/3.png"
     },
     {
         "titulo": "Sobre las revoluciones de las orbes celestes",
         "autor": "Nicolas Copérnico",
         "año": 1543,
-        "editorial": "desconocida",
+        "editorial": "desconocida.",
         "id": 4,
-        "imagen":  "../imgs/4.jpg"
+        "imagen": "../imgs/4.jpg"
+    },
+    {
+        "titulo": "El contrato social",
+        "autor": "Jean Jacques Rousseau",
+        "año": 1762,
+        "editorial": "Marc-Michel Rey, Amsterdam, Países Bajos.",
+        "id": 5,
+        "imagen": "../imgs/5.jpg"
+    },
+    {
+        "titulo": "El ser y la nada",
+        "autor": "Jean Paul Sartre",
+        "año": 1943,
+        "editorial": "desconocida.",
+        "id": 6,
+        "imagen": "../imgs/6.png"
     }
 ]

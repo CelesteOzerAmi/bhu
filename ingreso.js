@@ -32,10 +32,10 @@ const mostrarUsuario = () => {
     let usuario = JSON.parse(sessionStorage.getItem("usuario"));
     contenedorForm.innerHTML = `
         <section>
-        <h2 class="display-3">Usuario ingresado</h2>
-        <p>Nombre: ${usuario.nombre} ${usuario.apellido}</p>
-        <p>Email: ${usuario.email}</p>
-        <p>Dirección: ${usuario.direccion}, ${usuario.apto}, ${usuario.depto}, ${usuario.pais} </p>
+        <p class="display-4">usuario ingresado</p>
+        <h4 class= "fw-light">nombre: ${usuario.nombre} ${usuario.apellido}</h4>
+        <h4 class="fw-light">email: ${usuario.email}</h4>
+        <h4 class="fw-light">dirección: ${usuario.direccion}, ${usuario.apto}, ${usuario.depto}, ${usuario.pais} </h4>
         </section>
     `;
 };
